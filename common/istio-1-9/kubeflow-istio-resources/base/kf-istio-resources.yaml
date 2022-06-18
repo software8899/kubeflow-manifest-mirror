@@ -12,3 +12,16 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
+  # Add your codes here, upgrade HTTP to HTTPS
+    tls:
+      httpsRedirect: true
+
+  - port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    hosts:
+      - '*'
+    tls:
+      credentialName: kubeflow-ingressgateway-certs
+      mode: SIMPLE

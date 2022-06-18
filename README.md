@@ -54,17 +54,11 @@ while ! kubectl kustomize example | kubectl apply -f -; do echo "Retrying to app
 Could not find CSRF cookie XSRF-TOKEN in the request. http://xx.xx.x.xxx/jupyter/api/namespaces/kubeflow-user/notebooks
 ```
 
-其根本原因是每个component中启用了https认证，但是istio却没有启用https网关。因此解决思路有两种(下面方法二者择其一即可)
+其根本原因是每个component中启用了https认证，但是istio却没有启用https网关。因此解决思路有两种
 
 1. 关闭每个component中的https认证，尤其是在调试时
 
-此方法有两种方式：
-
-a. 在安装之前，可参考该[issue](https://github.com/kubeflow/kubeflow/pull/6395)进行修改，关闭每个模块的https鉴权
-
-b. 如果已经启动服务，则可以直接kubectl edit deploy xxx -n kubeflow进行修改，修改后再进行kubectl rollout restart deploy xxx -n kubeflow即可
-
-2. 启用istio https网关（私有化部署适用，公有云需要https证书）
+2. 启用istio https网关
 
 为了直接使用，在此将istio网关设为https。可以参考[crud-web-apps 1.3 Could not find CSRF cookie XSRF-TOKEN in the request · Issue #5803 · kubeflow/kubeflow (github.com)](https://github.com/kubeflow/kubeflow/issues/5803)
 
@@ -117,4 +111,4 @@ spec:
 
 ## CONTACT
 
-QQ 744483644
+QQ 249929131

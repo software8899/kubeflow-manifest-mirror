@@ -20,7 +20,7 @@ spec:
         configMap:
           name: ml-pipeline-ui-configmap
       containers:
-      - image: registry.cn-zhangjiakou.aliyuncs.com/kubeflow-zhentian/frontend:dummy
+      - image: 172.16.2.10:443/ml-pipelines-frontend:dummy
         imagePullPolicy: IfNotPresent
         name: ml-pipeline-ui
         ports:
